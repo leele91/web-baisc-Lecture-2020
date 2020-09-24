@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            font-family: "고딕";
+            border-block-color: #a0ecec;
+            padding-left: 10px;
+            width: fit-content;
+            outline: solid black 1px;
+        }
+        span{
+            padding-right: 20px;
+            font-style: italic;
+            font-size: 4em;
+            height: 1em;
+            widows: 1em;
+            color: blue;
+            src
+        }
+    </style>
+    <script>
+       function reset () {
+           this.parentElement.removeChild(this);
+           let spanTags = document.getElementsByTagName('span');
+           for(let i = 0; i<spanTags.length; i++) {
+               spanTags[i].innerHTML="0";
+           }
+       }
+       function getRandomNumber() {
+           return Math.floor(Math.random()*3); //랜덤하게 숫자 나옴
+       }
+// 게임결과
+function finishGame(obj) {
+    obj.innerHTML = getRandomNumber(); // 현재 박스에 랜덤 숫자 넣기
+    let parent = obj.parentElement;
+    let children = parent.children;
+
+    // 검사
+    let i,
+    totallySame=true,
+    firstValue= children[0].innerText;
+    for(i=1; i<children.length; i++) {
+        if(firstValue!=children[i].innerText) {
+            totallySame = false;
+        }
+    }
+    //결과
+    let pTag = document.createElement('p');
+    pTag.onclick = reset; //이벤트
+    if(parent.parentElement.lastChild !=parent)
+        parent.parentElement.removeChild(parent.parentElement.lastChild);
+        parent.parentElement.appendChild(pTag);
+
+        // 성공
+        if (totallySame) {
+            pTag.innerText="성공(다시 하려면 클릭)";
+            console.log("성공");
+        }
+        //실패
+        else {
+            console.log("실패")
+            pTag.innerText="실패(다시 하려면 클릭)";
+        }
+}
+    </script>
+</head>
+<body>
+    <h1>겜블링 게임</h1>
+    <hr>
+    <p>
+        게임머니:<span1 id="money">10,000원</span1>  
+        횟수:<span1 id ="count">0회</span1>
+    </p>
+    <div>
+        <span onclick="innerHTML=getRandomNumber()">0</span>
+        <span onclick="innerHTML=getRandomNumber()">0</span>
+        <span onclick="finishGame(this)">0</span>
+    </div>
+</body>
+</html>

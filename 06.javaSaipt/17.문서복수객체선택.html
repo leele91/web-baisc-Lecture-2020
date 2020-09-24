@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서객체 복수 선택</title>
+    <script>
+        window.onload = 
+            setTimeout(function () {
+                // 문서객체를 선택합니다. body안에 하나 밖에 없을경우 하나만이라도 읽어줌
+                let headers = document.querySelectorAll('h1');
+
+                for (let header of headers) {
+                    header.style.color = 'red';
+                    header.style.backgroundColor = 'aliceblue';
+                    header.innerHTML = 'From Java Script';
+                }
+            }, 3000);
+        
+    </script>
+
+</head>
+
+<body>
+    <h1>Title</h1>
+    <!-- <h1>Title</h1>
+    <h1>Title</h1> -->
+</body>
+
+</html>
